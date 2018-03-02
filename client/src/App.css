@@ -26,3 +26,36 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/*CUSTOM*/
+
+.maxWidth100 {
+  max-width:100%;
+}
+
+.mAuto {
+  margin:auto;
+}
+
+.togglebutton {
+  position:fixed;
+  top:0;
+  right:0;
+  margin-right:0px;
+}
+
+.navBrand {
+  margin-top:-0.5em;
+  margin-right:100em;
+}
+
+.navbarHeight{
+  margin-top:100px;
+  position:relative;
+  top:;
+  height:10px;
+}
+
+.container {
+  height: 10px;
+}
