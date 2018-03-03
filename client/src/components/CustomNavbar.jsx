@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Nav, Navbar, NavItem, NavDropdown, MenuItem, Tabs, ButtonToolbar, Button, Table, ButtonGroup, Row, Col, Grid, Panel, FormGroup, FormControl} from 'react-bootstrap';
 import './CustomNavbar.css';
+import { Link } from 'react-router-dom';
 
 
 export default class CustomNavbar extends Component {
@@ -9,7 +10,7 @@ export default class CustomNavbar extends Component {
       <Navbar inverse collapseOnSelect>
   <Navbar.Header>
     <Navbar.Brand>
-      <a href="#brand">React-Bootstrap</a>
+      <Link to="/">BIRD WATCH</Link>
     </Navbar.Brand>
     <Navbar.Toggle />
   </Navbar.Header>
