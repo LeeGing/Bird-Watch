@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Jumbotron, Grid, Col, Checkbox, Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
 import './Home.css';
 import axios from 'axios';
 import UserStore from "../stores/UserStore";
@@ -11,15 +13,13 @@ export default class Login extends Component {
     super(props);
     this.state = {
       user: UserStore.getUser(),
+      redirect: false,
       email: "",
       password: ""
     }
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.userLogin = this.userLogin.bind(this);
-
-
-
   }
   
   componentDidMount() {
@@ -40,6 +40,7 @@ export default class Login extends Component {
         const userdata = res.data;
         UserStore.updateUser(userdata.user.email, userdata.token);
         const abc = UserStore.getUser();
+        this.setState({ redirect: true })
         console.log(abc)
       })
       .catch(error => {
@@ -48,6 +49,11 @@ export default class Login extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
+     if (redirect) {
+       return <Redirect to='/'/>;
+     }
+
     return (
       <Grid>
         <Jumbotron>
