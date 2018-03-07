@@ -5,15 +5,15 @@ class UserStore extends EventEmitter {
     super();
     this.user = {
       id: null,
-      email: null,
+      username: null,
       token: null
     }
     this.updateUser = this.updateUser.bind(this)
   }
 
-  updateUser(id, email, token) {
+  updateUser(id, username, token) {
     this.user.id = id;
-    this.user.email = email;
+    this.user.username = username;
     this.user.token = token;
     return this.user;
   }
@@ -23,6 +23,6 @@ class UserStore extends EventEmitter {
   }
 }
 
-const userStore = new UserStore;
+const userStore = new UserStore();
 
 export default userStore;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Jumbotron, Grid } from 'react-bootstrap';
 import './css/AllBirds.css';
 import axios from 'axios';
 
@@ -32,17 +31,15 @@ export default class AllBirds extends Component {
       <Grid>
           {this.state.birds.map((bird) => {
             return (
-              <div>
-                  <Jumbotron>
+              <div key={bird.id}>
+                <Jumbotron>
                   <img className="z-depth-5" src={bird.image}/>
-                <p> Species: {bird.name} </p>
-                <p> Description: {bird.description} </p>
-                <p> Location: {bird.location} </p>
-                <p> User: {bird.userId} </p>
-                <p> Username: {bird.username} </p>
-
-
-                  </Jumbotron>
+                  <p> Species: {bird.name} </p>
+                  <p> Description: {bird.description} </p>
+                  <p> Location: {bird.location} </p>
+                  <p> User: {bird.userId} </p>
+                  <p> Username: {bird.username} </p>
+                </Jumbotron>
               </div> 
               )}
             )}

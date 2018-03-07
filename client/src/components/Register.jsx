@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Grid, Col, Checkbox, Button, Form, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import './css/Home.css';
 import axios from 'axios';
 import UserStore from "../stores/UserStore";
@@ -10,10 +11,13 @@ export default class Register extends Component {
     super(props);
     this.state = {
       user: UserStore.getUser(),
-      email: "",
-      password: ""
+      username: "",
+      password: "",
+      error: null,
+      error2: null, 
+      error3: null
     }
-    this.handleEmail = this.handleEmail.bind(this);
+    this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.registerUser = this.registerUser.bind(this);
 
@@ -22,25 +26,36 @@ export default class Register extends Component {
   componentDidMount() {
   }
 
-  handleEmail(event) {
-    this.setState({email: event.target.value});
+  handleUsername(event) {
+    this.setState({username: event.target.value});
   }
   handlePassword(event) {
     this.setState({password: event.target.value});
   }
 
   registerUser(){
-    axios.post(`http://localhost:8000/register`, {email: this.state.email, password: this.state.password})
+    axios.post(`http://localhost:8000/register`, {username: this.state.username, password: this.state.password})
       .then(res => {
         const userdata = res.data;
+        UserStore.updateUser(userdata.user.id, userdata.user.username, userdata.token);
+        this.setState({ redirect: true })
         console.log(userdata)
       })
       .catch(error => {
-        console.log(error.response)
+        this.setState({error: error.response.data.error});
+        this.setState({error2: error.response.data.error2});
+        this.setState({error3: error.response.data.error3});
+        console.log(this.state.username)
+        console.log(error.response.data.error)
       })
   }
 
   render() {
+    const { redirect } = this.state;
+     if (redirect) {
+       return <Redirect to='/'/>;
+     }
+     
     return (
       <Grid>
         <Jumbotron>
@@ -51,7 +66,7 @@ export default class Register extends Component {
                 Email
               </Col>
               <Col sm={10}>
-                <input type="email" value={this.state.email} onChange={this.handleEmail} />
+                <input type="text" value={this.state.username} onChange={this.handleUsername} />
               </Col>
             </FormGroup>
 
@@ -75,6 +90,9 @@ export default class Register extends Component {
                 <Button bsStyle="success" onClick={this.registerUser}>Sign Up</Button>
               </Col>
             </FormGroup>
+            <div> { this.state.error } </div>
+            <div> { this.state.error2 } </div>
+            <div> { this.state.error3 } </div>
           </Form>
         </Jumbotron>
       </Grid>

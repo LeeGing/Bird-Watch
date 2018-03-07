@@ -25,7 +25,7 @@ export default class CustomNavbar extends Component {
     if(userToken){
       userLogged = <LoggedIn/>
     }
-
+    
     return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
@@ -36,17 +36,18 @@ export default class CustomNavbar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} href="#">
-              About
+            <NavItem>
+              <Link to="/about">About</Link>
             </NavItem>
-            <NavItem eventKey={2} href="#">
-              <Link to="/share_bird">Bird</Link>
+            <NavItem>
+              <Link to="/birds">All</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/share_bird">Share</Link>
             </NavItem>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">
-              <Link to="/login">{userLogged}</Link>
-            </NavItem>
+            {userLogged}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

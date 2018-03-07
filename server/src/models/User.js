@@ -25,7 +25,7 @@ function hashPassword (user, options) {
 module.exports = (sequelize, DataTypes) => {
 	// we need the the const User to allow us to reference the user object
 	const User = sequelize.define('User', {
-    email: {
+    username: {
       type: DataTypes.STRING,
       unique: true
     },

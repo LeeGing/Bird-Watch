@@ -7,7 +7,9 @@ module.exports = {
 	register (req, res, next) {
 		const schema = {
 			// joi will validate such things
-			email: Joi.string().email(),
+			username: Joi.string().regex(
+        new RegExp('^[a-zA-Z0-9]{5,15}$')
+        ),
 			password: Joi.string().regex(
 				// regex determining what is allowed and 8-32 char
 				new RegExp('^[a-zA-Z0-9]{8,32}$')
@@ -20,22 +22,21 @@ module.exports = {
 			if (error) {
 				// we check the error and the key of the error and return different error messages depending on the error
 				switch (error.details[0].context.key) {
-					case 'email':
+					case 'username':
 						res.status(400).send({
-							error: 'You must provide a valid email address.'
+							error: 'The username provided failed to match the following rules:',
+              error2: '1. It must contain ONLY the following characters: A-Z OR 0-9.',
+              error3: '2. It must be at between 5-15 characters.'
 						})
 						break
 					case 'password':
 						res.status(400).send({
-							error: `The password provided failed to match the following rules:
-							<br>
-							1. It must contain ONLY the following characters: [a-z A-Z 0-9].
-							<br>
-							2. It must be at between 8-32 characters.`
+							error: 'The password provided failed to match the following rules:',
+							error2: '1. It must contain ONLY the following characters: A-Z OR 0-9.',
+							error3: '2. It must be at between 8-32 characters.'
 						})
 						break
 					default:
-
 				}
 			} else {
 			 next()

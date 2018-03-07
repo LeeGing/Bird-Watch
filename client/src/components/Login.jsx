@@ -12,10 +12,10 @@ export default class Login extends Component {
     this.state = {
       user: UserStore.getUser(),
       redirect: false,
-      email: "",
+      username: "",
       password: ""
     }
-    this.handleEmail = this.handleEmail.bind(this);
+    this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.userLogin = this.userLogin.bind(this);
   }
@@ -23,18 +23,18 @@ export default class Login extends Component {
   componentDidMount() {
   }
 
-  handleEmail(event) {
-    this.setState({email: event.target.value});
+  handleUsername(event) {
+    this.setState({username: event.target.value});
   }
   handlePassword(event) {
     this.setState({password: event.target.value});
   }
 
   userLogin(){
-    axios.post(`http://localhost:8000/login`, {email: this.state.email, password: this.state.password})
+    axios.post(`http://localhost:8000/login`, {username: this.state.username, password: this.state.password})
       .then(res => {
         const userdata = res.data;
-        UserStore.updateUser(userdata.user.id, userdata.user.email, userdata.token);
+        UserStore.updateUser(userdata.user.id, userdata.user.username, userdata.token);
         const abc = UserStore.getUser();
         this.setState({ redirect: true })
         console.log(abc)
@@ -60,7 +60,7 @@ export default class Login extends Component {
                 Email
               </Col>
               <Col sm={10}>
-                <input type="email" value={this.state.email} onChange={this.handleEmail} />
+                <input type="text" value={this.state.username} onChange={this.handleUsername} />
               </Col>
             </FormGroup>
 

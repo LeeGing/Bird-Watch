@@ -12,13 +12,11 @@ export default class LoggedOut extends Component {
   }
   render() {
     return (
-      <div>
         <NavItem eventKey={1} href="#">
           <Link className="userLogged" to="/login">LOGIN</Link>
           |
           <Link className="userLogged" to="/register">SIGN UP</Link>
         </NavItem>
-      </div>
     )
   }
 }
