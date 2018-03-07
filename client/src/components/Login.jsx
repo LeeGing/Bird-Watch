@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Col, Checkbox, Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Jumbotron, Grid, Col, Checkbox, Button, Form, FormGroup, ControlLabel } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-
-import './Home.css';
+import './css/Home.css';
 import axios from 'axios';
 import UserStore from "../stores/UserStore";
 
@@ -33,12 +31,10 @@ export default class Login extends Component {
   }
 
   userLogin(){
-    let userEmail = this.state.email;
-    let userPassword = this.state.password;
     axios.post(`http://localhost:8000/login`, {email: this.state.email, password: this.state.password})
       .then(res => {
         const userdata = res.data;
-        UserStore.updateUser(userdata.user.email, userdata.token);
+        UserStore.updateUser(userdata.user.id, userdata.user.email, userdata.token);
         const abc = UserStore.getUser();
         this.setState({ redirect: true })
         console.log(abc)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Col, Checkbox, Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import './Home.css';
+import { Jumbotron, Grid, Col, Checkbox, Button, Form, FormGroup, ControlLabel } from 'react-bootstrap';
+import './css/Home.css';
 import axios from 'axios';
 import UserStore from "../stores/UserStore";
 
@@ -18,8 +17,6 @@ export default class Register extends Component {
     this.handlePassword = this.handlePassword.bind(this);
     this.registerUser = this.registerUser.bind(this);
 
-
-
   }
   
   componentDidMount() {
@@ -33,8 +30,6 @@ export default class Register extends Component {
   }
 
   registerUser(){
-    let userEmail = this.state.email;
-    let userPassword = this.state.password;
     axios.post(`http://localhost:8000/register`, {email: this.state.email, password: this.state.password})
       .then(res => {
         const userdata = res.data;

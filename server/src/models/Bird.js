@@ -3,10 +3,12 @@ const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'))
 
 module.exports = (sequelize, DataTypes) => {
 	const Bird = sequelize.define('Bird', {
-    birdname: DataTypes.STRING,
+    name: DataTypes.STRING,
     description: DataTypes.STRING,
     location: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    image: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    username: DataTypes.STRING
   })
   return Bird
 }

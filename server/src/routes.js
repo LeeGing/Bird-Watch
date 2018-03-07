@@ -18,7 +18,6 @@ module.exports = (app) => {
 		BirdsController.index),
 
 	app.post('/birds',
-    // BirdsControllerPolicy.post,
 		BirdsController.post),
 
 	app.get('/birds/:birdId',

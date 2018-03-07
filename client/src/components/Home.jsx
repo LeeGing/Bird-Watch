@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Row, Col, Image, Button } from 'react-bootstrap';
+import { Jumbotron, Grid, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './Home.css';
+import './css/Home.css';
 import UserStore from "../stores/UserStore";
 
 export default class Home extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Nav, Navbar, NavItem, NavDropdown, MenuItem, Tabs, ButtonToolbar, Button, Table, ButtonGroup, Row, Col, Grid, Panel, FormGroup, FormControl} from 'react-bootstrap';
-import './CustomNavbar.css';
+import {Nav, Navbar, NavItem } from 'react-bootstrap';
+import './css/CustomNavbar.css';
 import { Link } from 'react-router-dom';
 import UserStore from "../stores/UserStore";
 import LoggedIn from './LoggedIn';
@@ -40,7 +40,7 @@ export default class CustomNavbar extends Component {
               About
             </NavItem>
             <NavItem eventKey={2} href="#">
-              Birds
+              <Link to="/share_bird">Bird</Link>
             </NavItem>
           </Nav>
           <Nav pullRight>

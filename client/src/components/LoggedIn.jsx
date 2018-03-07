@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './CustomNavbar.css';
-import { Link } from 'react-router-dom';
+import './css/CustomNavbar.css';
 import UserStore from "../stores/UserStore";
 
 

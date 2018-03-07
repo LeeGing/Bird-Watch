@@ -3,7 +3,7 @@
 // module.exports = {
 //   post (req, res, next) {
 //     const schema = {
-//       birdname: Joi.string(),
+//       birdName: Joi.string(),
 //       description: Joi.string(),
 //       location: Joi.string(),
 //       userId: Joi.number()

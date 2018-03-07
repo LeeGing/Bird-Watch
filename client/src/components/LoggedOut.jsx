@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './LoggedOut.css';
+import './css/LoggedOut.css';
 import { Link } from 'react-router-dom';
-import UserStore from "../stores/UserStore";
-import {Nav, Navbar, NavItem, NavDropdown, MenuItem, Tabs, ButtonToolbar, Button, Table, ButtonGroup, Row, Col, Grid, Panel, FormGroup, FormControl} from 'react-bootstrap';
+import { NavItem } from 'react-bootstrap';
 
 
 export default class LoggedOut extends Component {

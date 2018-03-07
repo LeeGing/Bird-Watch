@@ -25,6 +25,7 @@ module.exports = {
 	async post (req, res) {
 			try {
 				const bird = await Bird.create(req.body)
+        console.log("HEOOLO", req.body)
 				res.send(bird)
 			} catch (err) {
 				res.status(403).send({

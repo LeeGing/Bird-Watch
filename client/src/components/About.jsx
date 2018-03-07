@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Jumbotron, Grid, Row, Col, Image, Button } from 'react-bootstrap';
+import { Jumbotron, Grid, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './Home.css';
+import './css/Home.css';
 import axios from 'axios';
 import UserStore from "../stores/UserStore";
 import LoggedIn from './LoggedIn';
