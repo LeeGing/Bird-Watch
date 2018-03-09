@@ -8,6 +8,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import PostBird from './components/PostBird';
 import AllBirds from './components/AllBirds';
+import Logout from './components/Logout';
+
 
 
 class App extends Component {
@@ -22,6 +24,8 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/share_bird" component={PostBird} />
           <Route path="/birds" component={AllBirds} />
+          <Route path="/logout" component={Logout} />
+
 
 
         </div>

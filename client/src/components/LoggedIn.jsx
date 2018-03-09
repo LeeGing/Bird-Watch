@@ -20,7 +20,7 @@ export default class LoggedIn extends Component {
       <NavItem eventKey={1} href="#">
           <Link className="userLogged" to="/All">{this.state.user.username}</Link>
           |
-          <Link className="userLogged" to="/All">LOG OUT</Link>
+          <Link className="userLogged" to="/logout">LOGOUT </Link>
       </NavItem>
     )
   }
